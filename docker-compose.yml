@@ -7,10 +7,10 @@ services:
       - ./environments/db.env
     command: bundle exec puma -C config/puma.rb
     volumes:
-      - webapp:/webapp
-      - webapp/public-data:/webapp/public
-      - webapp/tmp-data:/webapp/tmp
-      - webapp/log-data:/webapp/log
+      - ./webapp:/webapp
+      - ./webapp/public-data:/webapp/public
+      - ./webapp/tmp-data:/webapp/tmp
+      - ./webapp/log-data:/webapp/log
     depends_on:
       - db
   db:
@@ -23,8 +23,8 @@ services:
     build:
       context: containers/nginx
     volumes:
-      - webapp/public-data:/webapp/public
-      - webapp/tmp-data:/webapp/tmp
+      - ./webapp/public-data:/webapp/public
+      - ./webapp/tmp-data:/webapp/tmp
     ports:
       - 80:80
     depends_on:
