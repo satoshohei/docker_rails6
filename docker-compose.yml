@@ -17,6 +17,9 @@ services:
     image: mysql:5.7
     env_file:
       - ./environments/db.env
+    environment:
+      MYSQL_USER: rails_user
+      MYSQL_PASSWORD: rails_password
     volumes:
       - db-data:/var/lib/mysql
   web:
